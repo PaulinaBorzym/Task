@@ -14,9 +14,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class SimpleEmailService {
-
     private final JavaMailSender javaMailSender;
-
     public void send(final Mail mail) {
         log.info("Starting email preparation...");
         try {
@@ -27,9 +25,8 @@ public class SimpleEmailService {
             log.error("Failed to process email sending: " + e.getMessage(), e);
         }
     }
-
     private SimpleMailMessage createMailMessage(final Mail mail) {
-        Optional<String> toCCOptional = Optional.of(mail.getToCc());
+        Optional<String> toCCOptional = Optional.ofNullable(mail.getToCc());
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(mail.getMailTo());
         mailMessage.setSubject(mail.getSubject());
