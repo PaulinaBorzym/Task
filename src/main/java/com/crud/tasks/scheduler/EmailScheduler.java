@@ -30,10 +30,6 @@ public class EmailScheduler {
     }
     private String createMessage() {
         long size = taskRepository.count();
-        if (size == 1) {
-            return "Currently in database you got: " + size + " task";
-        } else {
-            return "Currently in database you got: " + size + " tasks";
-        }
+        return size == 1 ? "Currently in database you got: " + size + " task" : "Currently in database you got: " + size + " tasks";
     }
 }
