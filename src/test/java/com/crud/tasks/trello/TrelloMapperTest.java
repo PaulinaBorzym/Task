@@ -96,6 +96,7 @@ public class TrelloMapperTest {
         Assertions.assertEquals(1, trelloLists2.size());
         Assertions.assertEquals("A", trelloLists1.get(0).getName());
         Assertions.assertEquals("3",trelloLists2.get(0).getId());
+        Assertions.assertTrue(trelloLists2.get(0).isClosed());
     }
     @Test
     public void mapToCartDtoTest(){
